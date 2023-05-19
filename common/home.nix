@@ -1,4 +1,4 @@
-# _       _
+#        _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -34,5 +34,8 @@
     };
     stateVersion = "23.05";
   };
-  programs.home-manager.enable = true;
+  programs.home-manager = {
+    enable = true;
+    backup = true;
+  };
 }

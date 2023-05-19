@@ -64,7 +64,7 @@
     };
     history = {
       size = 100000;
-      path = "/Users/tom/zsh/history";
+      path = "<HOME>/zsh/history";
     };
     enableCompletion = true;
     enableAutosuggestions = true;
