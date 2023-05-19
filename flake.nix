@@ -53,14 +53,14 @@
     darwinConfigurations.<HOST> = darwin.lib.darwinSystem {
       system = "<ARCH>";
       modules = [
-        ./config.nix
+        ./darwin/config.nix
         home-manager.darwinModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { };
-            users."<USER>".imports = [ ./home.nix ];
+            users."<USER>".imports = [ ./darwin/home.nix ];
           };
         }
       ];
