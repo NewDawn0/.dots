@@ -1,17 +1,27 @@
-# _       _
+#        _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
 #  (_)__,_|\___/ \__|___/
 # github.com:NewDawn0/.dots
 #
-# File: darwin/config.nix
-# Desc: Darwin configuration options
+# File: darwin/default.nix
+# Desc: Default darwin settings
 { pkgs, ... }: {
+  # Home cfg
   users.users."<USER>" = {
     home = "<HOME>";
     shell = pkgs.zsh;
   };
+  # Env
+  environment = {
+    shells = with pkgs; [ bash zsh ];
+    loginShell = pkgs.zsh;
+    systemPackages = [ pkgs.coreutils ];
+    systemPath = [ "/opt/homebrew/bin" ];
+    pathsToLink = [ "/Applications" ];
+  };
+  # Nix config
   nix = {
     useDaemon = true;
     package = pkgs.nix;
@@ -26,6 +36,7 @@
       experimental-features = nix-command flakes
     '';
   };
+  # System config
   system = {
     defaults = {
       dock = {
@@ -71,5 +82,15 @@
       "sudo chsh -s ${pkgs.zsh}/bin/zsh";
     stateVersion = 4;
   };
-  programs.zsh.enable = true;
+
+  # Homebrew
+  homebrew = {
+    enable = true;
+    caskArgs.no_quarantine = true;
+    global.brewfile = true;
+    masApps = { };
+    casks = [ "raycast" "amethyst" ];
+    taps = [ ];
+    brews = [ ];
+  };
 }

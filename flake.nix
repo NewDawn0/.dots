@@ -1,4 +1,4 @@
-#        _       _       
+#        _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -31,13 +31,12 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-#
 {
   description = "NewDawn0's system dotfiles";
-
   inputs = {
+    # Nix Url
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    # Home manager
+    # Hom manager
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,19 +47,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = { self, darwin, home-manager, nixpkgs }: {
+  outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
     darwinConfigurations.<HOST> = darwin.lib.darwinSystem {
       system = "<ARCH>";
+      pkgs = import nixpkgs { system = "<ARCH>"; };
       modules = [
-        ./darwin/config.nix
+        ./darwin
         home-manager.darwinModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { };
-            users."<USER>".imports = [ ./darwin/home.nix ];
+            users.<USER>.imports = [ ./common/home.nix ];
           };
         }
       ];
