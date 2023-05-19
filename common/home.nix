@@ -36,6 +36,5 @@
   };
   programs.home-manager = {
     enable = true;
-    backup = true;
   };
 }
