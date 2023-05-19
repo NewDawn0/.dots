@@ -59,7 +59,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { };
-            backupFileExtension = ".bak";
+            backupFileExtension = "bak";
             users.<USER>.imports = [ ./common/home.nix ./common/zsh.nix ];
           };
         }
