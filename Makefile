@@ -26,9 +26,6 @@ darwin-setup:
 	find . -type f ! -name "Makefile" -exec sed -i 's#\([^[:alpha:]-]\)<USER>\([^[:alpha:]-]\)#\1'"$(USER)"'\2#g' {} \;
 	find . -type f ! -name "Makefile" -exec sed -i 's#\([^[:alpha:]-]\)<ARCH>\([^[:alpha:]-]\)#\1'"$(ARCH)"'\2#g' {} \;
 	@printf '%bInfo%b  Installing dependencies\n' "$(GREEN)" "$(RESET)" 
-	@if ! command -v brew >/dev/null 2>&1; then \
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
-	fi
 
 darwin-build:
 	@printf '%bInfo%b  Building\n' "$(GREEN)" "$(RESET)" 
