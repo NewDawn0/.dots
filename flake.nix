@@ -48,9 +48,9 @@
     };
   };
   outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
-    darwinConfigurations.<HOST> = darwin.lib.darwinSystem {
-      system = "<ARCH>";
-      pkgs = import nixpkgs { system = "<ARCH>"; };
+    darwinConfigurations.t-book-pro = darwin.lib.darwinSystem {
+      system = "x86_64-darwin";
+      pkgs = import nixpkgs { system = "x86_64-darwin"; };
       modules = [
         ./darwin
         home-manager.darwinModules.home-manager
@@ -59,7 +59,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { };
-            users.<USER>.imports = [ ./common/home.nix ];
+            users.tom.imports = [ ./common/home.nix ./common/zsh.nix ];
           };
         }
       ];

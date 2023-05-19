@@ -9,8 +9,8 @@
 # Desc: Default darwin settings
 { pkgs, ... }: {
   # Home cfg
-  users.users."<USER>" = {
-    home = "<HOME>";
+  users.users."tom" = {
+    home = "/Users/tom";
     shell = pkgs.zsh;
   };
   # Env
@@ -26,7 +26,7 @@
     useDaemon = true;
     package = pkgs.nix;
     gc = {
-      user = "<USER>";
+      user = "tom";
       automatic = true;
       interval.Day = 7;
       options = "--delete-older-than 7d";

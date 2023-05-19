@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -6,11 +6,10 @@
 # github.com:NewDawn0/.dots
 #
 # File: common/home.nix
-# Desc: Home-Manager configuration
+# Desc: home-manager settings
 { pkgs, ... }: {
-  # Home manager config
   home = {
-    stateVersion = "23.05";
+    packages = with pkgs; [ ripgrep fd curl wget less gnat rustup git neovim ];
     sessionVariables = {
       PAGER = "less";
       EDITOR = "nvim";
@@ -26,13 +25,14 @@
       LC_ALL = "C";
       # General
       KEYTIMEOUT = 1;
-      TERM = "xterm-256color";
-      COLORTERM = "24bit";
+      CLICOLOR = 1;
+      CLICOLOR_FORCE = "yes";
       SYSTEMD_COLORS = "true";
       FZF_CTRL_R_OPTS = "--sort --exact";
       VI_MODE_RESET_PROMPT_ON_MODE_CHANGE = "true";
       VI_MODE_SET_CURSOR = "true";
     };
+    stateVersion = "23.05";
   };
-  programs = { home-manager.enable = true; };
+  programs.home-manager.enable = true;
 }
