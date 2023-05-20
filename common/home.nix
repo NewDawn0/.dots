@@ -9,7 +9,38 @@
 # Desc: home-manager settings
 { pkgs, ... }: {
   home = {
-    packages = with pkgs; [ ripgrep fd curl wget less gnat rustup git neovim ];
+    packages = with pkgs; [
+      ripgrep
+      fd
+      curl
+      wget
+      less
+      gnat
+      rustup
+      git
+      neovim
+      zsh
+      yt-dlp
+      bat
+      btop
+      bottom
+      coreutils
+      curl
+      exa
+      fd
+      file
+      figlet
+      fzf
+      git
+      gnused
+      less
+      mdcat
+      ripgrep
+      starship
+      wget
+      gnat
+      nasm
+    ];
     sessionVariables = {
       PAGER = "less";
       EDITOR = "nvim";
@@ -34,7 +65,5 @@
     };
     stateVersion = "23.05";
   };
-  programs.home-manager = {
-    enable = true;
-  };
+  programs.home-manager = { enable = true; };
 }

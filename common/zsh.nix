@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -8,29 +8,6 @@
 # File: common/zsh.nix
 # Desc: Z-Shell settings
 { pkgs, ... }: {
-  home.packages = with pkgs; [
-    zsh
-    yt-dlp
-    bat
-    btop
-    bottom
-    coreutils
-    curl
-    exa
-    fd
-    file
-    figlet
-    fzf
-    git
-    gnused
-    less
-    mdcat
-    ripgrep
-    starship
-    wget
-    gnat
-    nasm
-  ];
   programs.zsh = {
     enable = true;
     autocd = false;
