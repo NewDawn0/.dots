@@ -12,8 +12,11 @@ My Configurations
 
 - _Prerequisites_
 
-* Brew
-  `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+  - Brew
+
+  ```bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
 
 ```bash
 git clone https://github.com/NewDawn0/.dots.git ~/.config/darwin
