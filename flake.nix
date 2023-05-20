@@ -1,4 +1,4 @@
-# _       _
+#        _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -47,12 +47,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, ... }: {
     darwinConfigurations.<HOST> = darwin.lib.darwinSystem {
       system = "<ARCH>";
       pkgs = import nixpkgs { system = "<ARCH>"; };
       modules = [
         ./darwin
+        ./common/packages.nix
         home-manager.darwinModules.home-manager
         {
           home-manager = {
@@ -65,5 +66,6 @@
         }
       ];
     };
+    darwinPackages = self.darwinConfigurations.<HOST>.pkgs;
   };
 }

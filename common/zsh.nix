@@ -1,4 +1,4 @@
-# _       _
+#        _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -8,6 +8,7 @@
 # File: common/zsh.nix
 # Desc: Z-Shell settings
 { pkgs, ... }: {
+  home.packages = with pkgs; [ zsh exa gnat neovim git ];
   programs.zsh = {
     enable = true;
     autocd = false;
@@ -103,18 +104,8 @@
       bindkey '^a' autosuggest-accept
     '';
     profileExtra = ''
-      export PATH="$PATH:/usr/local/bin:~/.local/bin/"
+      export PATH=$PATH:/usr/local/bin:~/.local/bin/:/run/current-system/sw/bin
     '';
-    # environment.pathsToLink = [ "/share/zsh" ];
-    # zplug = {
-    #   enable = true;
-    #   plugins = [
-    #     { name = "zsh-users/zsh-syntax-highlighting"; }
-    #     { name = "zsh-users/zsh-autopair"; }
-    #     { name = "zsh-users/zsh-autosuggestions"; }
-    #     { name = "zsh-users/zsh-autocomplete"; }
-    #   ];
-    # };
     oh-my-zsh.enable = false;
   };
 }

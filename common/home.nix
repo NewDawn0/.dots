@@ -1,4 +1,4 @@
-# _       _
+#        _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -9,38 +9,7 @@
 # Desc: home-manager settings
 { pkgs, ... }: {
   home = {
-    packages = with pkgs; [
-      ripgrep
-      fd
-      curl
-      wget
-      less
-      gnat
-      rustup
-      git
-      neovim
-      zsh
-      yt-dlp
-      bat
-      btop
-      bottom
-      coreutils
-      curl
-      exa
-      fd
-      file
-      figlet
-      fzf
-      git
-      gnused
-      less
-      mdcat
-      ripgrep
-      starship
-      wget
-      gnat
-      nasm
-    ];
+    packages = with pkgs; [ less neovim ];
     sessionVariables = {
       PAGER = "less";
       EDITOR = "nvim";

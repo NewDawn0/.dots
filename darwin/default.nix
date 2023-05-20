@@ -22,7 +22,13 @@
     pathsToLink = [ "/Applications" ];
   };
   # Nix config
+  programs.nix-index.enable = true;
   nix = {
+    settings = {
+      sandbox = true;
+      extra-sandbox-paths = [ "/private/tmp" "/usr/bin/env" ];
+    };
+    configureBuildUsers = true;
     useDaemon = true;
     package = pkgs.nix;
     gc = {
@@ -41,7 +47,7 @@
     defaults = {
       dock = {
         autohide = true;
-        orientation = "left";
+        orientation = "bottom";
         showhidden = true;
       };
       NSGlobalDomain = {
@@ -86,7 +92,12 @@
   # Homebrew
   homebrew = {
     enable = true;
-    caskArgs.no_quarantine = true;
+    onActivation = {
+      autoUpdate = false;
+      upgrade = false;
+      cleanup = "zap";
+    };
+    caskArgs.no_quarantine = false;
     global.brewfile = true;
     masApps = { };
     casks = [ "raycast" ];
