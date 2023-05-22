@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -7,11 +7,13 @@
 #
 # File: common/zsh.nix
 # Desc: Z-Shell settings
-{ pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   home.packages = with pkgs; [ zsh exa gnat neovim git ];
   programs.zsh = {
     enable = true;
     autocd = false;
+    dotDir = ".config/zsh";
+    oh-my-zsh.enable = false;
     shellAliases = {
       # Nix
       nixse = "nix search nixpkgs";
@@ -22,6 +24,7 @@
       # Cargo
       cargoup = "cargo install-update -a";
       # Utils
+      reload = "~/.zshrc";
       ls = "exa";
       lsa = "exa --all --all";
       lt = "exa -T --color=always --group-directories-first";
@@ -42,11 +45,10 @@
     };
     history = {
       size = 100000;
-      path = "<HOME>/zsh/history";
+      path = "/Users/tom/zsh/history";
     };
     enableCompletion = true;
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    enableAutosuggestions = false;
     sessionVariables = { MAILCHECK = 30; };
     initExtra = ''
       # Syntax
@@ -102,10 +104,50 @@
       set -o vi
       bindkey -v
       bindkey '^a' autosuggest-accept
+      autopair-init
+      # Nix
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+      if ! pgrep nix-daemon >/dev/null; then
+          echo "Started nix daemon"
+          nix-daemon &> /dev/null &
+      fi
+      # End Nix
+      clear
     '';
     profileExtra = ''
       export PATH=$PATH:/usr/local/bin:~/.local/bin/:/run/current-system/sw/bin
     '';
-    oh-my-zsh.enable = false;
+    plugins = with pkgs; [
+      {
+        name = "zsh-syntax-highlighting";
+        src = fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-syntax-highlighting";
+          rev = "0.6.0";
+          sha256 = "0zmq66dzasmr5pwribyh4kbkk23jxbpdw4rjxx0i7dx8jjp2lzl4";
+        };
+        file = "zsh-syntax-highlighting.zsh";
+      }
+      {
+        name = "zsh-autopair";
+        src = fetchFromGitHub {
+          owner = "hlissner";
+          repo = "zsh-autopair";
+          rev = "34a8bca0c18fcf3ab1561caef9790abffc1d3d49";
+          sha256 = "1h0vm2dgrmb8i2pvsgis3lshc5b0ad846836m62y8h3rdb3zmpy1";
+        };
+        file = "autopair.zsh";
+      }
+    ];
+  };
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }

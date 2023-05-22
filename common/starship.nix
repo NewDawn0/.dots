@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -8,11 +8,10 @@
 # File: common/starship.nix
 # Desc: Starship prompt settings
 { pkgs, ... }: {
-  home.packages = with pkgs; [ starship ];
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = true;
+      command_timeout = 1000;
       # Enabled
       character = {
         success_symbol = "[ ](#ffa500)";
@@ -95,6 +94,8 @@
         disabled = false;
       };
       python = {
+        symbol = "";
+        style = "Blue";
         format = "[ $symbol $version]($style)";
         disabled = false;
       };

@@ -6,13 +6,31 @@
 # github.com:NewDawn0/.dots
 #
 # File: darwin/default.nix
-# Desc: Default darwin settings
+# Desc: Darwin configuration
 { pkgs, ... }: {
-  # Home cfg
-  users.users."<USER>" = {
-    home = "<HOME>";
-    shell = pkgs.zsh;
+  nix = {
+    settings = {
+      sandbox = true;
+      trusted-users = [ "root" "@wheel" ];
+      auto-optimise-store = true;
+      extra-sandbox-paths = [ "/private/tmp" "/usr/bin/env" ];
+    };
+    configureBuildUsers = true;
+    useDaemon = true;
+    package = pkgs.nix;
+    gc = {
+      user = "tom";
+      automatic = true;
+      interval.Day = 7;
+      options = "--delete-older-than 7d";
+    };
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-derivations = true
+      keep-outputs = true
+    '';
   };
+  programs.nix-index.enable = true;
   # Env
   environment = {
     shells = with pkgs; [ bash zsh ];
@@ -21,33 +39,16 @@
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
   };
-  # Nix config
-  programs.nix-index.enable = true;
-  nix = {
-    settings = {
-      sandbox = true;
-      extra-sandbox-paths = [ "/private/tmp" "/usr/bin/env" ];
-    };
-    configureBuildUsers = true;
-    useDaemon = true;
-    package = pkgs.nix;
-    gc = {
-      user = "<USER>";
-      automatic = true;
-      interval.Day = 7;
-      options = "--delete-older-than 7d";
-    };
-    extraOptions = ''
-      auto-optimise-store = true
-      experimental-features = nix-command flakes
-    '';
-  };
   # System config
   system = {
     defaults = {
+      screencapture = {
+        disable-shadow = false;
+        location = "~/Desktop/Screenshots";
+      };
       dock = {
         autohide = true;
-        orientation = "bottom";
+        orientation = "left";
         showhidden = true;
       };
       NSGlobalDomain = {
@@ -88,7 +89,6 @@
       "sudo chsh -s ${pkgs.zsh}/bin/zsh";
     stateVersion = 4;
   };
-
   # Homebrew
   homebrew = {
     enable = true;
@@ -104,4 +104,8 @@
     taps = [ ];
     brews = [ ];
   };
+  services.nix-daemon.enable = true;
+  # here go the darwin preferences and config items
+  system.keyboard.enableKeyMapping = true;
+  system.keyboard.remapCapsLockToEscape = false;
 }

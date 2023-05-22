@@ -6,10 +6,10 @@
 # github.com:NewDawn0/.dots
 #
 # File: common/home.nix
-# Desc: home-manager settings
+# Desc: Home-manager configuration
 { pkgs, ... }: {
   home = {
-    packages = with pkgs; [ less neovim ];
+    stateVersion = "22.11";
     sessionVariables = {
       PAGER = "less";
       EDITOR = "nvim";
@@ -20,9 +20,9 @@
       LESS =
         "--raw-control-chars -FXRadeqs -P--Less--?e?x(Next file: %x):(END).:?pB%pB%.";
       # Locale
-      LANG = "C";
-      LOCALE = "C";
-      LC_ALL = "C";
+      LANG = "en_US.UTF-8";
+      LOCALE = "en_US.UTF-8";
+      LC_ALL = "en_US.UTF-8";
       # General
       KEYTIMEOUT = 1;
       CLICOLOR = 1;
@@ -32,7 +32,5 @@
       VI_MODE_RESET_PROMPT_ON_MODE_CHANGE = "true";
       VI_MODE_SET_CURSOR = "true";
     };
-    stateVersion = "23.05";
   };
-  programs.home-manager = { enable = true; };
 }

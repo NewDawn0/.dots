@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -47,13 +47,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, ... }: {
-    darwinConfigurations.<HOST> = darwin.lib.darwinSystem {
-      system = "<ARCH>";
-      pkgs = import nixpkgs { system = "<ARCH>"; };
+  outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
+    darwinConfigurations.t-book-pro = darwin.lib.darwinSystem {
+      system = "x86_64-darwin";
+      pkgs = import nixpkgs { system = "x86_64-darwin"; };
       modules = [
         ./darwin
-        ./common/packages.nix
+        ./darwin/yabai.nix
+        ./darwin/skhd.nix
+        ./common/fonts.nix
         home-manager.darwinModules.home-manager
         {
           home-manager = {
@@ -61,11 +63,16 @@
             useUserPackages = true;
             extraSpecialArgs = { };
             backupFileExtension = "bak";
-            users.<USER>.imports = [ ./common/home.nix ./common/zsh.nix ];
+            users.tom.imports = [
+              ./common/home.nix
+              ./common/pkgs.nix
+              ./common/zsh.nix
+              ./common/alacritty.nix
+              ./common/starship.nix
+            ];
           };
         }
       ];
     };
-    darwinPackages = self.darwinConfigurations.<HOST>.pkgs;
   };
 }
