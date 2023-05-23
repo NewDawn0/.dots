@@ -44,7 +44,7 @@
     defaults = {
       screencapture = {
         disable-shadow = false;
-        location = "~/Desktop/Pictures";
+        location = "<HOME>/Pictures";
       };
       dock = {
         autohide = true;

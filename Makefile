@@ -21,7 +21,7 @@ default: setup darwin-build darwin-load
 # Setup
 setup:
 	@echo "$(GREEN)>> INFO:$(NOCOL)  Running setup"
-	mkdir -p $HOME/Pictures
+	mkdir -p $(HOME)/Pictures
 
 # Set variables
 set-vars:
