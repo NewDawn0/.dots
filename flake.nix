@@ -64,6 +64,7 @@
             backupFileExtension = "bak";
             users.tom.imports = [
               ./darwin/pkgs.nix
+              ./darwin/extra.nix
               ./common/home.nix
               ./common/pkgs.nix
               ./common/zsh.nix

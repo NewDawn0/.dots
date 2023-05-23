@@ -41,7 +41,7 @@
       add = "git add";
       push = "git push";
       pull = "git pull";
-      commit = "commit -m";
+      commit = "git commit -m";
     };
     history = {
       size = 100000;
@@ -108,10 +108,6 @@
       # Nix
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
           . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-      fi
-      if ! pgrep nix-daemon >/dev/null; then
-          echo "Started nix daemon"
-          nix-daemon &> /dev/null &
       fi
       # End Nix
       clear
