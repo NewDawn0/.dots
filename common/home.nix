@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -21,7 +21,7 @@
         "--raw-control-chars -FXRadeqs -P--Less--?e?x(Next file: %x):(END).:?pB%pB%.";
       # Locale
       LANG = "en_US.UTF-8";
-      LOCALE = "en_US.UTF-8";
+      LOCALE = "C";
       LC_ALL = "en_US.UTF-8";
       # General
       KEYTIMEOUT = 1;

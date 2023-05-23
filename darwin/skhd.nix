@@ -61,7 +61,7 @@
       ctrl + alt - e : yabai -m space --balance
 
       # Terminal
-      cmd - return : open -a Alacritty
+      cmd - return : open -a iterm
       lalt - return : open -a Orion
 
       # Switch back to the nearest desktop

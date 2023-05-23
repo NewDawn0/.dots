@@ -56,14 +56,14 @@
         ./darwin/yabai.nix
         ./darwin/skhd.nix
         ./common/fonts.nix
-        home-manager.darwinModules.home-manager
-        {
+        home-manager.darwinModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { };
             backupFileExtension = "bak";
             users.tom.imports = [
+              ./darwin/pkgs.nix
               ./common/home.nix
               ./common/pkgs.nix
               ./common/zsh.nix

@@ -7,7 +7,7 @@
 #
 # File: common/pkgs.nix
 # Desc: Installed packages
-{ pkgs, ... }: {
+{ pkgs, config, lib, ... }: {
   home.packages = with pkgs; [
     # B
     bat
