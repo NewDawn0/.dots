@@ -26,10 +26,10 @@ setup:
 # Set variables
 set-vars:
 	@echo "$(GREEN)>> INFO:$(NOCOL)  Setting variables"
-	find . ! -name "Makefile" ! -name "unbuild.sh" -exec echo sed -iE 's/([^[:alpha:]])<HOST>([^[:alpha:]])/\1'"$(HOST)"'\2/g' {} \;
-	find . ! -name "Makefile" ! -name "unbuild.sh" -exec echo sed -iE 's/([^[:alpha:]])<ARCH>([^[:alpha:]])/\1'"$(ARCH)"'\2/g' {} \;
-	find . ! -name "Makefile" ! -name "unbuild.sh" -exec echo sed -iE 's/([^[:alpha:]])<HOME>([^[:alpha:]])/\1'"$(HOME)"'\2/g' {} \;
-	find . ! -name "Makefile" ! -name "unbuild.sh" -exec echo sed -iE 's/([^[:alpha:]])<USER>([^[:alpha:]])/\1'"$(USER)"'\2/g' {} \;
+	find . ! -path './.git/*' ! -name "Makefile" ! -name "unbuild.sh" -exec sed -iE 's/([^[:alpha:]])<HOST>([^[:alpha:]])/\1'"$(HOST)"'\2/g' {} \;
+	find . ! -path './.git/*' ! -name "Makefile" ! -name "unbuild.sh" -exec sed -iE 's/([^[:alpha:]])<ARCH>([^[:alpha:]])/\1'"$(ARCH)"'\2/g' {} \;
+	find . ! -path './.git/*' ! -name "Makefile" ! -name "unbuild.sh" -exec sed -iE 's/([^[:alpha:]])<HOME>([^[:alpha:]])/\1'"$(HOME)"'\2/g' {} \;
+	find . ! -path './.git/*' ! -name "Makefile" ! -name "unbuild.sh" -exec sed -iE 's/([^[:alpha:]])<USER>([^[:alpha:]])/\1'"$(USER)"'\2/g' {} \;
 
 # Build darwin
 darwin-build:
