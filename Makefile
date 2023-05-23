@@ -15,8 +15,13 @@ HOST  := $(shell hostname -s)
 ARCH  := "$(shell uname -m)$(shell uname -s | tr '[:upper:]' '[:lower:]')"
 
 # Phony & default targets
-.PHONY: darwin-build darwin-load set-vars def-test
-default: darwin-build darwin-load
+.PHONY: darwin-build darwin-load set-vars setup
+default: setup darwin-build darwin-load
+
+# Setup
+setup:
+	@echo "$(GREEN)>> INFO:$(NOCOL)  Running setup"
+	mkdir -p $HOME/Pictures
 
 # Set variables
 set-vars:
@@ -35,10 +40,3 @@ darwin-build:
 darwin-load:
 	@echo "$(GREEN)>> INFO:$(NOCOL)  Loading configuration"
 	./result/sw/bin/darwin-rebuild switch --flake .
-
-def-test:
-	@echo "$(GREEN)>> Info:$(NOCOL)  Running tests"
-	@echo "USER::$(USER)"
-	@echo "ARCH::$(ARCH)"
-	@echo "HOME::$(HOME)"
-	@echo "HOST::$(HOST)"
