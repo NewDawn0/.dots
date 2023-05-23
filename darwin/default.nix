@@ -100,9 +100,9 @@
     caskArgs.no_quarantine = false;
     global.brewfile = true;
     masApps = { };
-    casks = [ "raycast" "imagemagick" ];
+    casks = [ "raycast" ]; # Apps
     taps = [ ];
-    brews = [ ];
+    brews = [ "imagemagick" ];
   };
   services.nix-daemon.enable = true;
   # here go the darwin preferences and config items
