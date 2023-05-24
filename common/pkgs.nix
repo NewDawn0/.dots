@@ -16,7 +16,6 @@
       btop
       # C
       coreutils
-      cppclean
       ctags
       curl
       # E
