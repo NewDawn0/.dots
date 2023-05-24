@@ -46,8 +46,13 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Rust support
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, fenix, ... }: {
     darwinConfigurations.t-book-pro = darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       pkgs = import nixpkgs { system = "x86_64-darwin"; };
@@ -56,23 +61,36 @@
         ./darwin/yabai.nix
         ./darwin/skhd.nix
         ./common/fonts.nix
-        home-manager.darwinModules.home-manager {
+        ./common/pkgs.nix
+        home-manager.darwinModules.home-manager
+        {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { };
             backupFileExtension = "bak";
             users.tom.imports = [
-              ./darwin/pkgs.nix
               ./darwin/extra.nix
               ./common/home.nix
-              ./common/pkgs.nix
               ./common/zsh.nix
               ./common/alacritty.nix
               ./common/starship.nix
             ];
           };
         }
+        # ({ pkgs, ... }: {
+        #   nixpkgs.overlays = [ fenix.overlays.default ];
+        #   environment.systemPackages = with pkgs; [
+        #     (fenix.complete.withComponents [
+        #       "cargo"
+        #       "clippy"
+        #       "rust-src"
+        #       "rustc"
+        #       "rustfmt"
+        #     ])
+        #     rust-analyzer-nightly
+        #   ];
+        # })
       ];
     };
   };

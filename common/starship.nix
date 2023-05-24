@@ -7,7 +7,7 @@
 #
 # File: common/starship.nix
 # Desc: Starship prompt settings
-{ pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   programs.starship = {
     enable = true;
     settings = {

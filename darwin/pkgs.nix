@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -7,8 +7,6 @@
 #
 # File: darwin/pkgs.nix
 # Desc: Installed darwin packages
-{ pkgs, config, lib, ... }: {
-  home.packages = with pkgs; [
-    iterm2
-  ];
+{ lib, config, pkgs, ... }: {
+  home.packages = with pkgs; [ iterm2 ];
 }

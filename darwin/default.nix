@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -7,11 +7,14 @@
 #
 # File: darwin/default.nix
 # Desc: Darwin configuration
-{ pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
+  # Nix
+  programs.nix-index.enable = true;
+  services.nix-daemon.enable = true;
   nix = {
     settings = {
       sandbox = true;
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = [ "root" "@wheel" "@admin" ];
       auto-optimise-store = true;
       extra-sandbox-paths = [ "/private/tmp" "/usr/bin/env" ];
     };
@@ -30,12 +33,10 @@
       keep-outputs = true
     '';
   };
-  programs.nix-index.enable = true;
   # Env
   environment = {
     shells = with pkgs; [ bash zsh ];
     loginShell = pkgs.zsh;
-    systemPackages = [ pkgs.coreutils ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
   };
@@ -44,7 +45,7 @@
     defaults = {
       screencapture = {
         disable-shadow = false;
-        location = "<HOME>/Pictures";
+        location = "/Users/tom/Pictures";
       };
       dock = {
         autohide = true;
@@ -78,7 +79,7 @@
       };
       finder = {
         AppleShowAllExtensions = true;
-        _FXShowPosixPathInTitle = true;
+        _FXShowPosixPathInTitle = false;
       };
       trackpad = {
         Clicking = false;
@@ -104,8 +105,10 @@
     taps = [ ];
     brews = [ "imagemagick" ];
   };
-  services.nix-daemon.enable = true;
-  # here go the darwin preferences and config items
+  # Misc
+  services.emacs.enable = true;
+  networking = { hostName = "t-book-pro"; };
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = false;
+  security.pam.enableSudoTouchIdAuth = true;
 }

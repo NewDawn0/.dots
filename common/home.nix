@@ -7,7 +7,7 @@
 #
 # File: common/home.nix
 # Desc: Home-manager configuration
-{ pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   home = {
     stateVersion = "22.11";
     sessionVariables = {
@@ -18,7 +18,7 @@
       FIGNORE = "*.o:~:Application Scripts:CVS:.git";
       MANPAGER = "less -R --use-color -Dd+r +Gg -M -s";
       LESS =
-        "--raw-control-chars -FXRadeqs -P--Less--?e?x(Next file: %x):(END).:?pB%pB%.";
+        "-FXRadeqs -P--Less--?e?x(Next file: %x):(END).:?pB%pB%.";
       # Locale
       LANG = "en_US.UTF-8";
       LOCALE = "C";

@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -7,8 +7,9 @@
 #
 # File: darwin/extra.nix
 # Desc: Additional settings for mac
-{ config, lib, pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   programs.zsh.shellAliases = {
-    wmre = "sudo launchctl kickstart -k gui/501/org.nixos.yabai && sudo launchctl kickstart -k gui/501/org.nixos.skhd"; # Restart window manager + hotkey daemon
+    wmre =
+      "sudo launchctl kickstart -k gui/501/org.nixos.yabai && sudo launchctl kickstart -k gui/501/org.nixos.skhd"; # Restart window manager + hotkey daemon
   };
 }

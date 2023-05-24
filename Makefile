@@ -11,12 +11,12 @@
 # Variables
 GREEN := \x1b[1;32m
 NOCOL := \x1b[0m
-HOST  := $(shell hostname -s)
 ARCH  := "$(shell uname -m)$(shell uname -s | tr '[:upper:]' '[:lower:]')"
+HOST := $(shell hostname -s)
 
 # Phony & default targets
-.PHONY: darwin-build darwin-load set-vars setup
-default: setup darwin-build darwin-load
+.PHONY: darwin-build darwin-load set-vars setup clean
+default: setup darwin-build darwin-load clean
 
 # Setup
 setup:
@@ -40,3 +40,7 @@ darwin-build:
 darwin-load:
 	@echo "$(GREEN)>> INFO:$(NOCOL)  Loading configuration"
 	./result/sw/bin/darwin-rebuild switch --flake .
+
+clean:
+	@echo "$(GREEN)>> INFO:$(NOCOL)  Cleaning"
+	rm -rf ./result flake.lock

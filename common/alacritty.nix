@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -7,7 +7,7 @@
 #
 # File: common/alacritty.nix
 # Desc: Alacritty term configuration
-{ pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   programs = {
     alacritty = {
       enable = true;

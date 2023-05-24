@@ -1,4 +1,4 @@
-#        _       _
+# _       _
 #     __| | ___ | |_ ___ 
 #    / _` |/ _ \| __/ __|
 #   | (_| | (_) | |_\__ \
@@ -7,7 +7,7 @@
 #
 # File: darwin/yabai.nix
 # Desc: Skhd hotkey daemon configuration
-{ pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   services.skhd = {
     enable = true;
     package = pkgs.skhd;

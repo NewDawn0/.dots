@@ -7,7 +7,7 @@
 #
 # File: common/fonts.nix
 # Desc: Installed fonts
-{ pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   fonts = {
     fontDir.enable = false;
     fonts = with pkgs; [

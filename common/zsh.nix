@@ -7,7 +7,7 @@
 #
 # File: common/zsh.nix
 # Desc: Z-Shell settings
-{ config, lib, pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   home.packages = with pkgs; [ zsh exa gnat neovim git ];
   programs.zsh = {
     enable = true;
