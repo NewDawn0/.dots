@@ -110,14 +110,11 @@
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
           . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
-      if ! pgrep skhd; then
-          skhd -c /etc/skhdrc >/dev/null 2>&1 &
-      fi
       # End Nix
       clear
     '';
     profileExtra = ''
-      export PATH=$PATH:/usr/local/bin:~/.local/bin/:/run/current-system/sw/bin
+      export PATH=$PATH:/usr/local/bin:~/.local/bin/:/run/current-system/sw/bin:~/.cargo/bin
     '';
     plugins = with pkgs; [
       {
