@@ -21,6 +21,7 @@
       nixls = "nix-env --query";
       nixup =
         "nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist";
+      nix-gc = "nix-collect-garbage";
       # Cargo
       cargoup = "cargo install-update -a";
       # Utils
@@ -108,6 +109,9 @@
       # Nix
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
           . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+      if ! pgrep skhd; then
+          skhd -c /etc/skhdrc >/dev/null 2>&1 &
       fi
       # End Nix
       clear

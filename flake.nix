@@ -62,6 +62,8 @@
         ./darwin/skhd.nix
         ./common/fonts.nix
         ./common/pkgs.nix
+        ./common/nvim-pkgs.nix
+        ./common/py-pkgs.nix
         home-manager.darwinModules.home-manager
         {
           home-manager = {

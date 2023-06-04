@@ -8,6 +8,13 @@
 # File: darwin/default.nix
 # Desc: Darwin configuration
 { lib, config, pkgs, ... }: {
+  # Darwin
+  users.users = {
+    tom = {
+      shell = pkgs.zsh;
+      home = "/Users/tom/";
+    };
+  };
   # Nix
   programs.nix-index.enable = true;
   services.nix-daemon.enable = true;
@@ -101,9 +108,9 @@
     caskArgs.no_quarantine = false;
     global.brewfile = true;
     masApps = { };
-    casks = [ "raycast" ]; # Apps
+    casks = [ "raycast" "gimp" ]; # Apps
     taps = [ ];
-    brews = [ "imagemagick" ];
+    brews = [ "imagemagick" "openssl" "lua" ];
   };
   # Misc
   services.emacs.enable = true;

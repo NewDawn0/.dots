@@ -17,8 +17,7 @@
       GIT_EDITOR = "nvim";
       FIGNORE = "*.o:~:Application Scripts:CVS:.git";
       MANPAGER = "less -R --use-color -Dd+r +Gg -M -s";
-      LESS =
-        "-FXRadeqs -P--Less--?e?x(Next file: %x):(END).:?pB%pB%.";
+      LESS = "-FXRadeqs -P--Less--?e?x(Next file: %x):(END).:?pB%pB%.";
       # Locale
       LANG = "en_US.UTF-8";
       LOCALE = "C";
@@ -31,6 +30,9 @@
       FZF_CTRL_R_OPTS = "--sort --exact";
       VI_MODE_RESET_PROMPT_ON_MODE_CHANGE = "true";
       VI_MODE_SET_CURSOR = "true";
+      HOMEBREW_AUTOREMOVE = 1;
+      DOCKER_HOST =
+        "unix:///Users/tom/.local/share/containers/podman/machine/qemu/podman.sock";
     };
   };
 }

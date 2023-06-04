@@ -15,13 +15,17 @@
       bottom
       btop
       # C
+      cmake
       coreutils
       ctags
       curl
+      # D
+      docker
       # E
       exa
       # F
       fd
+      ffmpeg
       figlet
       file
       fzf
@@ -29,26 +33,40 @@
       git
       gnat
       gnused
+      gnupg
+      # H
+      haxe
       # J
       jq
       # L
       less
+      luajit
       # M
       mdcat
       # N
       nasm
+      neko
       neovim
       nixfmt
+      # P
+      pass
+      podman
+      # Q
+      qemu
       # R
+      rustanalyzer
       ripgrep
       rustup
       # S
       shellcheck
       # T
       terminal-notifier
+      tldr
       # W
       wget
       # Y
       yt-dlp
-    ] ++ lib.optionals stdenv.isDarwin [ iterm2 ];
+      # Z
+      zig
+    ] ++ lib.optionals stdenv.isDarwin [ iterm2 skhd ];
 }

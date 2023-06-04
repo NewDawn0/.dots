@@ -15,7 +15,7 @@ ARCH  := "$(shell uname -m)$(shell uname -s | tr '[:upper:]' '[:lower:]')"
 HOST := $(shell hostname -s)
 
 # Phony & default targets
-.PHONY: darwin-build darwin-load set-vars setup clean
+.PHONY: darwin-load set-vars setup clean
 default: setup darwin-build darwin-load clean
 
 # Setup

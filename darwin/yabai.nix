@@ -44,17 +44,20 @@
     };
     extraConfig = ''
       yabai -m rule --add app='^Emacs$' manage=on
+      # yabai -m rule --add app='^Finder$' manage=on
+      yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=on
       yabai -m rule --add title='Preferences' manage=off layer=above
       yabai -m rule --add title='Library' manage=off layer=above
       yabai -m rule --add app='^System Preferences$' manage=off layer=above
       yabai -m rule --add app='Activity Monitor' manage=off layer=above
-      yabai -m rule --add app='Finder' manage=off layer=above
+      yabai -m rule --add app='Finder$' manage=on
       yabai -m rule --add app='^System Information$' manage=off layer=above
       yabai -m rule --add app="^balenaEtcher.*" manage=off layer=above
       yabai -m rule --add app="^raycast$" manage=off layer=above
       yabai -m rule --add app="^Font Book$" manage=off layer=above
       yabai -m rule --add app="^Calculator$" manage=off layer=above
       yabai -m rule --add app="^iTerm2$" manage=on
+      yabai -m rule --add app="^Calculator$" manage=off layer=above
     '';
   };
 }
