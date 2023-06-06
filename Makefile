@@ -49,8 +49,8 @@ clean:
 	rm -rf ./result flake.lock
 
 acknowledge:
-	@echo "$(GREEN)>> INFO:$(NOCOL)  Post install"
+	@echo "\n$(GREEN)>> INFO:$(NOCOL)  Post install"
 	@echo "Add the following lines to your crontab:"
-	@echo "$(CYAN_S)@reboot$(RED_S) skhd -c /etc/skhdrc >/dev/null 2>&1 &\n$(CYAN_S)@reboot $(RED_S)podman machine start >/dev/null 2>&1 &$(NOCOL)\n"
+	@echo "$(CYAN_S)@reboot$(RED_S) skhd -c /etc/skhdrc >/dev/null 2>&1 &\n$(CYAN_S)@reboot $(RED_S)podman machine start >/dev/null 2>&1 &$(NOCOL)"
 	@echo ">> Press any key to acknowledge"
 	@read

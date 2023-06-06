@@ -42,6 +42,7 @@
       luajit
       # M
       mdcat
+      mpv
       # N
       nasm
       neko
