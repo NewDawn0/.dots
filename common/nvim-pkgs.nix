@@ -11,12 +11,11 @@
   environment.systemPackages = with pkgs; [
     neovim
     black
-    npm
     python3
     python3.pkgs.reorder-python-imports
     statix
     nixfmt
-    rust
+    rustup
     luarocks
     fzf
     nodejs
@@ -24,6 +23,5 @@
     ghc
     cabal-install
     stack
-    ghcide
   ];
 }

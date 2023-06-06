@@ -13,10 +13,13 @@ GREEN := \x1b[1;32m
 NOCOL := \x1b[0m
 ARCH  := "$(shell uname -m)$(shell uname -s | tr '[:upper:]' '[:lower:]')"
 HOST := $(shell hostname -s)
+RED_S := \x1b[31m
+CYAN_S := \x1b[36m
 
 # Phony & default targets
-.PHONY: darwin-load set-vars setup clean
-default: setup darwin-build darwin-load clean
+.PHONY: darwin-load set-vars setup clean acknowledge
+default: setup darwin-build darwin-load clean acknowledge
+
 
 # Setup
 setup:
@@ -44,3 +47,10 @@ darwin-load:
 clean:
 	@echo "$(GREEN)>> INFO:$(NOCOL)  Cleaning"
 	rm -rf ./result flake.lock
+
+acknowledge:
+	@echo "$(GREEN)>> INFO:$(NOCOL)  Post install"
+	@echo "Add the following lines to your crontab:"
+	@echo "$(CYAN_S)@reboot$(RED_S) skhd -c /etc/skhdrc >/dev/null 2>&1 &\n$(CYAN_S)@reboot $(RED_S)podman machine start >/dev/null 2>&1 &$(NOCOL)\n"
+	@echo ">> Press any key to acknowledge"
+	@read

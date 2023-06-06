@@ -31,7 +31,6 @@
       fzf
       # G
       git
-      gnat
       gnused
       gnupg
       # H
@@ -54,7 +53,6 @@
       # Q
       qemu
       # R
-      rustanalyzer
       ripgrep
       rustup
       # S

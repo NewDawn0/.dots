@@ -10,6 +10,6 @@
 { lib, config, pkgs, ... }: {
   programs.zsh.shellAliases = {
     wmre =
-      "sudo launchctl kickstart -k gui/501/org.nixos.yabai && sudo launchctl kickstart -k gui/501/org.nixos.skhd"; # Restart window manager + hotkey daemon
+      "sudo launchctl kickstart -k gui/501/org.nixos.yabai && killall skhd && skhd -c /etc/skhdrc >/dev/null 2>&1 &"; # Restart window manager + hotkey daemon
   };
 }

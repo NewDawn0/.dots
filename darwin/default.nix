@@ -61,7 +61,6 @@
       };
       NSGlobalDomain = {
         AppleFontSmoothing = 2;
-        AppleInterfaceStyle = "Dark";
         AppleInterfaceStyleSwitchesAutomatically = true;
         NSAutomaticWindowAnimationsEnabled = true;
         NSTableViewDefaultSizeMode = 1;
