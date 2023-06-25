@@ -49,7 +49,7 @@
       path = "/Users/tom/zsh/history";
     };
     enableCompletion = true;
-    enableAutosuggestions = false;
+    enableAutosuggestions = true;
     sessionVariables = { MAILCHECK = 30; };
     initExtra = ''
       # Syntax
